@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='requestdoctor.css') }}">
+    <title>ADD Disease</title>
+    <style >
+        .center {
+      margin: auto;
+      width: 23%;
+      padding: 10px;
+      background-color: rgba(98, 101, 103, 0.5);
+
+      }
+
+
+    </style>
+</head>
+
+   <body>
+   <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('patient_profile') }}"><img src="static/logo.png" height="50"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ url_for('patient_account') }}"><font color="white">Account</font> </a>
+
+                <a class="nav-item nav-link" href="#"><font color="white">Contact Us</font> </a>
+                <a class="nav-item nav-link" href="{{ url_for('patient') }}"><font color="white">Logout</font></a>
+
+            </div>
+          </div>
+      </nav>
+    </header>
+   <br><h2 style = "text-align: center;"><i>Please enter Diseases </i></h2><br>
+   <div class="center">
+
+      {% for message in form.disease.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action = "http://localhost:5000/diseases" method = post>
+         <fieldset>
+
+            {{ form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+               <br>
+                <b>{{ form.disease.label }}</b><br>
+               {{ form.disease }}<br><br>
+
+                <b>{{ form.chronic.label }}</b><br>
+               {{ form.chronic }}
+               <br><br>
+                <b>{{ form.speciality.label }}</b><br>
+               {{ form.speciality }}
+               <br><br>
+
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+   </div>
+   </body>
+</html>

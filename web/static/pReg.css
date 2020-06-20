@@ -1,0 +1,27 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+  background-image: url("background1.jpg");
+
+}
+
+
+
+.bg-steel {
+  background-color: #2F4F4F;
+}
+
+
+
+.content-section {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #E6E6FA		;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  background-color: rgba(47,79,79, 0.5);
+
+}
+

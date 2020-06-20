@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='drlist.css') }}">
+    <title>Doctor Circle</title>
+    <style >
+        .center {
+      margin: auto;
+      width: 38%;
+      padding: 50px;
+      background-color: rgba(183, 149, 11,0.5);
+
+      }
+
+     table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  background-color: #f2f2f2
+}
+
+tr:nth-child{background-color: #f2f2f2}
+
+th {
+  background-color: #2F4F4F	 ;
+  color: white;
+}
+.text {
+  background-color: #D98880;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('patient_profile') }}"><img src="static/logo.png" height="50"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+
+            <div class="navbar-nav">
+
+
+                <a class="nav-item nav-link" href="#"><font color="white">Contact Us</font> </a>
+                <a class="nav-item nav-link" href="{{ url_for('patient') }}"><font color="white">Logout</font></a>
+
+            </div>
+          </div>
+      </nav>
+    </header>
+<br><h2 style = "text-align: center;"><i><font color="MAROON"> Doctor Circle </font></i></h2><br>
+   <div class="center">
+       <form>
+            {% if drcirc %}
+             <table>
+                 <th>Name</th>
+                 <th></th>
+                 <th></th>
+
+                        {% for doctor in drcirc %}
+                        <tr>
+                            <td><a href="DoctorProfile">{{doctor.doctorname}}</a></td>
+                            <td></td>
+                            <td>
+                                <button type="button" style="height:40px;width:150px" class="text">Delete Doctor </button>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+            {% endif %}
+       </form>
+
+   </div>
+</body>
+</html>

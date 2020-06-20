@@ -1,0 +1,106 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='analysepsy.css') }}">
+    <title>Analyze Psychological Symptoms</title>
+    <style >
+        .center {
+      margin: auto;
+      width: 45%;
+      padding: 40px;
+      background-color: rgba(98, 101, 103,0.9);
+
+      }
+
+
+    </style>
+</head>
+
+   <body>
+   <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('patient_profile') }}"><img src="static/logo.png" height="50"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ url_for('patient_account') }}"><font color="white">Account</font> </a>
+
+                <a class="nav-item nav-link" href="#"><font color="white">Contact Us</font> </a>
+                <a class="nav-item nav-link" href="{{ url_for('patient') }}"><font color="white">Logout</font></a>
+
+            </div>
+          </div>
+      </nav>
+    </header>
+   <div class="container" style="min-height:100%; width:80%">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+
+	{% block body %}{% endblock %}
+	</div>
+   <br><h2 style = "text-align: center;"><i><b><font color="darkred" ><u>Please Select Your Psychological Symptoms </u></font></b></i></h2><br>
+   <div class="center">
+
+      {% for message in form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+
+      <form action = "http://localhost:5000/psychologicalsymptoms" method = post>
+         <fieldset>
+
+            {{ form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+               <br>
+                <b><font color="red">{{ form.name.label }}</font></b><br>
+               {{ form.name }}<br><br>
+
+                <b><font color="white">{{ form.symptom1.label }}</font></b><br>
+               {{ form.symptom1 }}
+               <br><br>
+                <b><font color="white">{{ form.symptom2.label }}</font></b><br>
+               {{ form.symptom2 }}
+               <br><br>
+                <b><font color="white">{{ form.symptom3.label }}</font></b><br>
+               {{ form.symptom3 }}
+               <br><br>
+                <b><font color="white">{{ form.symptom4.label }}</font></b><br>
+               {{ form.symptom4 }}
+               <br><br>
+                <b><font color="white">{{ form.symptom5.label }}</font></b><br>
+               {{ form.symptom5 }}
+
+                <br><br>
+                <b>{{form.prediction.label}}</b><br>
+                {{form.prediction}}
+               <br><br>
+               <input type="submit" name="submit_button" value="Analyze Symptoms">
+                <input type="submit" name="submit_button" value="Find Doctor">
+
+
+            </div>
+
+         </fieldset>
+      </form>
+   </div>
+   </body>
+</html>

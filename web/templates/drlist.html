@@ -1,0 +1,147 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='drlist.css') }}">
+    <title>Doctor list</title>
+    <style >
+        .center {
+      margin: auto;
+      width: 70%;
+      padding: 50px;
+      background-color: rgba(127, 140, 141  ,0.5);
+
+      }
+
+     table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  background-color: #f2f2f2
+}
+
+tr:nth-child{background-color: #f2f2f2}
+
+th {
+  background-color: #A93226 ;
+  color: white;
+}
+    </style>
+</head>
+
+   <body>
+   <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('patient_profile') }}"><img src="static/logo.png" height="50"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ url_for('patient_account') }}"><font color="white">Account</font> </a>
+
+                <a class="nav-item nav-link" href="#"><font color="white">Contact Us</font> </a>
+                <a class="nav-item nav-link" href="{{ url_for('patient') }}"><font color="white">Logout</font></a>
+
+            </div>
+          </div>
+      </nav>
+    </header>
+   <br><h2 style = "text-align: center;"><i> Available Doctors In <p style="color:crimson;"> holiC </p></i></h2><br>
+   <div class="center">
+
+
+      <form action = "http://localhost:5000/drlist" method = post>
+         <fieldset>
+            {% if disease %}
+             <table>
+                 <h3 ><u>Doctors for {{disease}}</u></h3><br>
+                        <tr>
+
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>SLMCNo</th>
+                            <th>Hospital</th>
+                            <th>Option</th>
+                        </tr>
+                        {% for doctor in data %}
+                        <tr>
+                            <td><a href="DoctorProfile">{{doctor.username}}</a></td>
+                            <td name="speciality">{{doctor.speciality}}</td>
+                            <td>{{doctor.slmcno}}</td>
+                            <td>{{doctor.hospital}}</td>
+                            <td><input type="submit" name="submit_button" value={{doctor.username}}></td>
+                            <br>
+                        </tr>
+                    {% endfor %}
+                    </table>
+            {% endif %}
+            {%if psychodata%}<br>
+                    <table>
+                        <h3 ><u>Psychological Doctors</u></h3>
+                        <tr>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>SLMCNo</th>
+                            <th>Hospital</th>
+                            <th>Option</th>
+                        </tr>
+                        {% for doctor in psychodata %}
+                        <tr>
+                            <td><a href="DoctorProfile">{{doctor.username}}</a></td>
+                            <td>{{doctor.speciality}}</td>
+                            <td>{{doctor.slmcno}}</td>
+                            <td>{{doctor.hospital}}</td>
+                            <td><input type="submit" name="submit_button" value="{{doctor.username}}"></td>
+                            <br>
+                        </tr>
+                    {% endfor %}
+                    </table>
+            {%endif%}
+             {% if form %}
+                <table>
+                        <h3>Doctor list</h3>
+                        <p name="patient" hidden value="{{pname}}"></p>
+                        <tr>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>SLMCNo</th>
+                            <th>Hospital</th>
+                            <th>Option</th>
+                        </tr>
+                        {% for doctor in form %}
+                        <tr>
+
+                            <td><a href="DoctorProfile">{{doctor.username}}</a></td>
+
+                            <td>{{doctor.speciality}}</td>
+                            <td>{{doctor.slmcno}}</td>
+                            <td>{{doctor.hospital}}</td>
+                            <td><input type="submit" name="submit_button" value="{{doctor.username}}"></td>
+                            <br>
+                        </tr>
+                    {% endfor %}
+                    </table>
+             {% endif %}
+
+
+
+         </fieldset>
+      </form>
+   </div>
+   <div>
+
+   </div>
+   </body>
+</html>

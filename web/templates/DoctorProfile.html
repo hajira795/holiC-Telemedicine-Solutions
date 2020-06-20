@@ -1,0 +1,15 @@
+{% extends "DoctorProfileLayout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+            <h1 class="account-heading"><font color="peachpuff	" >{{ current_user.username }}</font></h1>
+            <h5 class="text-secondary"><font color="lightsalmon">Email :</font><font color="salmon	"> {{ current_user.email }}</font></h5>
+            <h5 class="text-secondary"><font color="lightsalmon">Speciality :</font><font color="salmon	"> {{ current_user.speciality }}</font></h5>
+            <h5 class="text-secondary"><font color="lightsalmon">Hospital :</font><font color="salmon	" >{{ current_user.hospital }}</font></h5>
+
+        </div>
+      </div>
+    </div>
+{% endblock content %}

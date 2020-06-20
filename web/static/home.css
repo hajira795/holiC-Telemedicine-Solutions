@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html,body{
+	background-image:url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+	background-size: cover;
+
+}
+
+*{
+	margin: 0;
+	padding:0;
+	font-family: verdana;
+
+}
+
+nav{
+	width: 100%;
+	height: 80px;
+	background-color: #0005;
+	line-height: 80px;
+}
+
+nav ul{
+	float: right;
+	margin-right: 30px;
+}
+
+nav ul li{
+	list-style-type: none;
+	display: inline-block;
+	transition: 0.8s all;
+
+}
+
+nav ul li:hover{
+	background-color: #CD5C5C;
+
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: #7FFFD4;
+	padding: 30px;
+
+}
+
+nav img{
+	padding-left: 175px;
+}
+
+
+
+.carousel-caption{
+	position:absolute;
+	top:50%;
+	transform:translatey(-50%);
+}
+
+.carousel-caption h1{
+font-size:500%;
+text-transform:uppercase;
+text-shadow:1px 1px  10px #000;
+color: #db7093;
+
+}
+.carousel-caption h3{
+	font-size:200%;
+	font-weight:500%;
+	text-shadow:1px  1px 10px #000;
+	padding-bottom: 1rem;
+	color: #FAEBD7;
+}
+
+.btn-primary{
+	background-color: #A52A2A;
+	border: 1px solid  #6648b1;
+}
+
+.btn-primary :hover{
+	background-color:#F4A460;
+	border: 1px solid #563d7c;
+}
+
+
+
+
+
+
